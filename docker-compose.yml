@@ -25,7 +25,10 @@ services:
       - "3000:3000"
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./csv:/var/lib/grafana/csv
+      - ./dashboard:/etc/grafana/provisioning/dashboards
+      - ./dashboard/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yml
+    depends_on:
+      - mysql
 
 volumes:
   mysql_data:
