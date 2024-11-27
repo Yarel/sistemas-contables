@@ -1,0 +1,77 @@
+CREATE TABLE tabla_empresas (
+    `NIT` TEXT, `DNITSIDU` TEXT, `DIREXP` TEXT, `CIUEXP` TEXT, `TELEXP` TEXT, `FAXEXP` TEXT, `PAISCON` TEXT, `NOMCON` TEXT, `DIRCON` TEXT, `DEPART` TEXT, `DESDEP` TEXT, `PROD` TEXT, `SECTOR` TEXT, `ACTOR` TEXT, `ANIO` TEXT
+);
+
+LOAD DATA INFILE '/docker-entrypoint-initdb.d/csv/EMPRESAS.csv'
+INTO TABLE tabla_empresas
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+CREATE TABLE tabla_nandina (
+    `DESNAN` TEXT, `CIIUR3` TEXT, `TNT` TEXT, `DESACT` TEXT, `CODACT` TEXT, `NANDINA` TEXT, `PUREZA` TEXT, `MINERAL` TEXT, `UNIDAD` TEXT, `MINERAL RES` TEXT, `TIPO_MINERAL` TEXT, `REFINADOS` TEXT, `INE` TEXT, `RESUMEN` TEXT, `ANIO` TEXT
+);
+
+LOAD DATA INFILE '/docker-entrypoint-initdb.d/csv/NANDINA.csv'
+INTO TABLE tabla_nandina
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+CREATE TABLE tabla_paises (
+    `PAIS` TEXT, `CAPITAL` TEXT, `CONTINENTE` TEXT
+);
+
+LOAD DATA INFILE '/docker-entrypoint-initdb.d/csv/PAISES.csv'
+INTO TABLE tabla_paises
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+CREATE TABLE tabla_meses (
+    `MES` TEXT, `NOM_MES` TEXT, `ABR_MES` TEXT, `NAME` TEXT
+);
+
+LOAD DATA INFILE '/docker-entrypoint-initdb.d/csv/tabla_meses.csv'
+INTO TABLE tabla_meses
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+CREATE TABLE tabla_actor (
+    `idACTOR` TEXT, `ACTOR` TEXT
+);
+
+LOAD DATA INFILE '/docker-entrypoint-initdb.d/csv/tabla_actor.csv'
+INTO TABLE tabla_actor
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+CREATE TABLE tabla_sector (
+    `idSECTOR` TEXT, `SECTOR` TEXT
+);
+
+LOAD DATA INFILE '/docker-entrypoint-initdb.d/csv/tabla_sector.csv'
+INTO TABLE tabla_sector
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+CREATE TABLE tabla_prod (
+    `idPROD` TEXT, `PROD` TEXT
+);
+
+LOAD DATA INFILE '/docker-entrypoint-initdb.d/csv/tabla_prod.csv'
+INTO TABLE tabla_prod
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+

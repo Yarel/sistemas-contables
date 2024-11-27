@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: grafana_data
+    command: --secure-file-priv=/docker-entrypoint-initdb.d
+    volumes:
+      - ./sql-scripts:/docker-entrypoint-initdb.d
+      - ./csv:/docker-entrypoint-initdb.d/csv
+    ports:
+      - "3306:3306"
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: always
+    environment:
+      GF_INSTALL_PLUGINS: "marcusolsson-csv-datasource"
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./csv:/var/lib/grafana/csv
+
+volumes:
+  mysql_data:
+  grafana_data:
+
